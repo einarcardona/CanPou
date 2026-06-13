@@ -65,7 +65,7 @@
   ::selection{background:var(--sage-soft);color:var(--green-deep)}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-  img{max-width:100%;display:block}
+  img{max-width:100%;height:auto;display:block}
   .skip-link{position:absolute;left:14px;top:-52px;z-index:100;background:var(--green);color:#fff;padding:10px 18px;border-radius:0 0 12px 12px;font-weight:600;transition:top .2s}
   .skip-link:focus{top:0;outline:3px solid var(--sage-soft)}
 
@@ -151,6 +151,29 @@
   .hphoto:nth-of-type(2){transform:rotate(2deg)}
   .heritage-cap{flex-basis:100%;text-align:center;margin-top:16px;font-family:var(--display);font-style:italic;color:var(--muted);font-size:1.04rem}
   .gate-photo{width:100%;border-radius:14px;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+  /* news */
+  .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .ncard{background:var(--paper);border-radius:var(--radius);padding:28px 26px;box-shadow:var(--shadow-sm);border:1px solid rgba(45,107,83,.07);transition:transform .35s,box-shadow .35s}
+  .ncard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .ntag{display:inline-block;background:var(--mint);color:var(--green-deep);font-weight:600;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:4px 11px;border-radius:999px;margin-bottom:12px}
+  .ndate{display:block;font-weight:600;color:var(--sage);font-size:.85rem;margin-bottom:6px}
+  .ncard h3{font-family:var(--display);font-weight:600;font-size:1.2rem;color:var(--green-deep);margin-bottom:8px}
+  .ncard p{color:var(--muted);font-size:.98rem}
+  /* review platform links */
+  .review-links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:32px}
+  .rbtn{display:inline-flex;align-items:center;gap:8px;background:var(--paper);border:1.5px solid rgba(45,107,83,.22);color:var(--green);font-weight:600;font-size:.95rem;padding:11px 20px;border-radius:999px;transition:.22s}
+  .rbtn:hover{background:var(--mint);transform:translateY(-2px)}
+  .rbtn .rstar{color:var(--sand-deep);font-size:1.05rem;line-height:1}
+  .rscore{margin-left:4px;background:var(--green);color:#fff;font-size:.8rem;font-weight:700;padding:2px 9px;border-radius:999px;letter-spacing:.01em}
+  /* map */
+  .map-wrap{margin-top:26px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);border:5px solid var(--paper);line-height:0}
+  .map-wrap iframe{width:100%;height:380px;border:0;display:block}
+  @media(max-width:540px){.map-wrap iframe{height:300px}}
+  /* footer socials */
+  .socials{display:flex;gap:10px;margin-top:14px}
+  .socials a{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.12);transition:.2s}
+  .socials a:hover{background:rgba(255,255,255,.24);transform:translateY(-2px)}
+  .socials svg{width:19px;height:19px}
 
   /* PRACTICAL */
   .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -189,7 +212,9 @@
     .about-grid{grid-template-columns:1fr;gap:34px}
     .about-art{order:-1}
     .garden-grid{grid-template-columns:1fr}
+    .garden-photo img{height:auto}
     .offer-grid{grid-template-columns:1fr}
+    .news-grid{grid-template-columns:1fr}
     .info-grid{grid-template-columns:1fr}
     .quotes{grid-template-columns:1fr}
   }
@@ -309,6 +334,38 @@
     </div>
   </section>
 
+  <!-- NEWS -->
+  <section class="sec" id="news">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker" data-i18n="newsKicker">What's on</span>
+        <h2 data-i18n="newsTitle">News &amp; seasonal</h2>
+        <p data-i18n="newsLead">Openings, events and what's fresh from the market right now.</p>
+      </div>
+      <div class="news-grid">
+        <!-- ➕ TO ADD A POST: copy one <article class="ncard"> block and edit the tag, date, title and text. Newest first. -->
+        <article class="ncard reveal d1">
+          <span class="ntag">Season</span>
+          <time class="ndate" datetime="2026-06-01">June 2026</time>
+          <h3>Open for the summer season</h3>
+          <p>Our garden terrace is open again — come and enjoy long, shaded lunches and dinners under the pines.</p>
+        </article>
+        <article class="ncard reveal d2">
+          <span class="ntag">Menu</span>
+          <time class="ndate" datetime="2026-05-15">May 2026</time>
+          <h3>New seasonal menu</h3>
+          <p>Fresh local fish, summer salads and a few new favourites from Claire's kitchen, guided by the market.</p>
+        </article>
+        <article class="ncard reveal d3">
+          <span class="ntag">Event</span>
+          <time class="ndate" datetime="2026-04-20">April 2026</time>
+          <h3>Live music in the garden</h3>
+          <p>An evening of music under the stars. Tables are limited, so give us a call to reserve yours.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- VISIT / PRACTICAL -->
   <section class="sec" id="visit">
     <div class="wrap">
@@ -343,6 +400,9 @@
           </div>
         </div>
       </div>
+      <div class="map-wrap reveal d2">
+        <iframe title="Map to Café Restaurante Can Pou" src="https://maps.google.com/maps?q=Caf%C3%A9%20Restaurante%20Can%20Pou%20Cam%C3%AD%20Cala%20Salada%20Sant%20Antoni%20Ibiza&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
   </section>
 
@@ -357,6 +417,11 @@
         <div class="quote reveal d1"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.7 6.1 6.6.6-5 4.4 1.5 6.5L12 17.3 6.2 20.6l1.5-6.5-5-4.4 6.6-.6z" fill="currentColor"/></svg></span><p data-i18n="q1">A beautiful garden setting and true Ibiza hospitality.</p></div>
         <div class="quote reveal d2"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.7 6.1 6.6.6-5 4.4 1.5 6.5L12 17.3 6.2 20.6l1.5-6.5-5-4.4 6.6-.6z" fill="currentColor"/></svg></span><p data-i18n="q2">Fresh local fish and the best homemade meatballs on the island.</p></div>
         <div class="quote reveal d3"><span class="star" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.7 6.1 6.6.6-5 4.4 1.5 6.5L12 17.3 6.2 20.6l1.5-6.5-5-4.4 6.6-.6z" fill="currentColor"/></svg></span><p data-i18n="q3">A relaxed, family-run gem — warm service and great value.</p></div>
+      </div>
+      <div class="review-links reveal d1">
+        <a class="rbtn" href="https://share.google/CHMnE2ekNi15ctJeO" target="_blank" rel="noopener"><span class="rstar" aria-hidden="true">★</span><span data-i18n="googleBtn">Reviews on Google</span><span class="rscore">4.5/5</span></a>
+        <a class="rbtn" href="https://www.tripadvisor.com/Restaurant_Review-g652116-d985276-Reviews-Cafe_Restaurante_Can_Pou-Sant_Antoni_de_Portmany_Ibiza_Balearic_Islands.html" target="_blank" rel="noopener"><span class="rstar" aria-hidden="true">★</span><span data-i18n="tripBtn">Reviews on TripAdvisor</span><span class="rscore">4.2/5</span></a>
+        <a class="rbtn" href="https://www.instagram.com/canpouibiza/" target="_blank" rel="noopener"><span class="rstar" aria-hidden="true">◎</span>Instagram</a>
       </div>
     </div>
   </section>
@@ -376,6 +441,10 @@
       <a href="tel:+34971340170">+34 971 340 170</a>
       <a href="https://wa.me/34682578769" target="_blank" rel="noopener">WhatsApp · 682 578 769</a>
       <a href="mailto:canpouibiza@gmail.com">canpouibiza@gmail.com</a>
+      <div class="socials">
+        <a href="https://www.facebook.com/RestauranteCanPou/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M13.5 21v-7.5h2.5l.5-3h-3V8.6c0-.9.3-1.5 1.6-1.5H17V4.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2v2H8v3h2.5V21z"/></svg></a>
+        <a href="https://www.instagram.com/canpouibiza/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.2" cy="6.8" r="1.1" fill="#fff" stroke="none"/></svg></a>
+      </div>
     </div>
   </div>
   <div class="wrap foot-bottom" data-i18n="foot">© {year} Café Restaurante Can Pou · Ibiza</div>
@@ -408,6 +477,8 @@ const I18N={
     q1:"A beautiful garden setting and true Ibiza hospitality.",
     q2:"Fresh local fish and the best homemade meatballs on the island.",
     q3:"A relaxed, family-run gem — warm service and great value.",
+    newsKicker:"What's on",newsTitle:"News & seasonal",newsLead:"Openings, events and what's fresh from the market right now.",
+    googleBtn:"Reviews on Google",tripBtn:"Reviews on TripAdvisor",
     footTagline:"Café Restaurante · Ibiza, since 1998",foot:"© {year} Café Restaurante Can Pou · Ibiza"
   },
   es:{skip:"Saltar al contenido",heroEyebrow:"Ibiza · Cala Salada · desde 1998",heroSub:"Café Restaurante",
@@ -435,6 +506,8 @@ const I18N={
     q1:"Un jardín precioso y auténtica hospitalidad ibicenca.",
     q2:"Pescado fresco local y las mejores albóndigas caseras de la isla.",
     q3:"Una joya familiar y relajada — trato cálido y muy buena relación calidad-precio.",
+    newsKicker:"Novedades",newsTitle:"Noticias y temporada",newsLead:"Aperturas, eventos y lo más fresco del mercado ahora mismo.",
+    googleBtn:"Opiniones en Google",tripBtn:"Opiniones en TripAdvisor",
     footTagline:"Café Restaurante · Ibiza, desde 1998",foot:"© {year} Café Restaurante Can Pou · Ibiza"
   },
   fr:{skip:"Aller au contenu",heroEyebrow:"Ibiza · Cala Salada · depuis 1998",heroSub:"Café Restaurant",
@@ -462,6 +535,8 @@ const I18N={
     q1:"Un cadre de jardin magnifique et une vraie hospitalité ibizenque.",
     q2:"Du poisson frais local et les meilleures boulettes maison de l'île.",
     q3:"Une perle familiale et détendue — service chaleureux et excellent rapport qualité-prix.",
+    newsKicker:"À l'affiche",newsTitle:"Actualités & saison",newsLead:"Ouvertures, événements et nouveautés du marché en ce moment.",
+    googleBtn:"Avis sur Google",tripBtn:"Avis sur TripAdvisor",
     footTagline:"Café Restaurant · Ibiza, depuis 1998",foot:"© {year} Café Restaurante Can Pou · Ibiza"
   },
   sv:{skip:"Hoppa till innehåll",heroEyebrow:"Ibiza · Cala Salada · sedan 1998",heroSub:"Café & Restaurang",
@@ -489,6 +564,8 @@ const I18N={
     q1:"En vacker trädgårdsmiljö och äkta ibizansk gästfrihet.",
     q2:"Färsk lokal fisk och öns bästa hemlagade köttbullar.",
     q3:"En avslappnad familjepärla — varmt bemötande och bra valuta för pengarna.",
+    newsKicker:"På gång",newsTitle:"Nyheter & säsong",newsLead:"Öppningar, evenemang och det färskaste från marknaden just nu.",
+    googleBtn:"Omdömen på Google",tripBtn:"Omdömen på TripAdvisor",
     footTagline:"Café & Restaurang · Ibiza, sedan 1998",foot:"© {year} Café Restaurante Can Pou · Ibiza"
   }
 };
